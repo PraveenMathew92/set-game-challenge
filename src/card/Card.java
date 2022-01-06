@@ -1,14 +1,26 @@
 package card;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-
 public class Card {
-    private Color color;
-    private Number number;
-    private Symbol symbol;
-    private Shading shading;
+    private final Color color;
+    private final Number number;
+    private final Symbol symbol;
+    private final Shading shading;
+
+    @Override
+    public String toString() {
+        String colorString = color.name().toLowerCase();
+        char firstChar;
+        if(shading == Shading.SYMBOL) {
+            firstChar = symbol.symbolCharacter;
+        } else if(shading == Shading.LOWER) {
+            firstChar = Character.toLowerCase(symbol.name().charAt(0));
+        } else {
+            firstChar = symbol.name().charAt(0);
+        }
+
+        return colorString + " " + String.valueOf(firstChar)
+                .repeat(number.ordinal() + 1);
+    }
 
     public Card(Color color, Number number, Symbol symbol, Shading shading) {
         this.color = color;

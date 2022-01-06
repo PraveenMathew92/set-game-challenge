@@ -43,4 +43,25 @@ public class CardTest {
                 .hashCode();
         assertEquals(expectedCardHash, Card.computeComplementaryCardHash(card, anotherCard));
     }
+
+    @Test
+    void shouldCovert3GreenLowerCaseAToString() {
+        Card card = new Card(Color.GREEN, Number.THREE, Symbol.A, Shading.LOWER);
+        String cardString = "green aaa";
+        assertEquals(cardString, card.toString());
+    }
+
+    @Test
+    void shouldCovert2BlueUpperCaseSToString() {
+        Card card = new Card(Color.BLUE, Number.TWO, Symbol.S, Shading.UPPER);
+        String cardString = "blue SS";
+        assertEquals(cardString, card.toString());
+    }
+
+    @Test
+    void shouldCovert1YellowSymbolCaseHToString() {
+        Card card = new Card(Color.YELLOW, Number.ONE, Symbol.H, Shading.SYMBOL);
+        String cardString = "yellow #";
+        assertEquals(cardString, card.toString());
+    }
 }
