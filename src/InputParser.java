@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class InputParser {
     private static final Number[] NUMBER_VALUES = Number.values();
-    private static final Map<Character, Symbol> symbolLookup = Map.of('@', Symbol.A,
-            '#', Symbol.H,
-            '$', Symbol.S);
+    private static final Map<Character, Symbol> symbolLookup = Map.of(Symbol.A.symbolCharacter, Symbol.A,
+            Symbol.H.symbolCharacter, Symbol.H,
+            Symbol.S.symbolCharacter, Symbol.S);
 
     private static Shading parserShading(char firstChar) {
         if(Character.isLowerCase(firstChar)) {
