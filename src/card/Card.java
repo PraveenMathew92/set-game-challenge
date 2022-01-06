@@ -1,5 +1,9 @@
 package card;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
 public class Card {
     private Color color;
     private Number number;
@@ -11,6 +15,38 @@ public class Card {
         this.number = number;
         this.symbol = symbol;
         this.shading = shading;
+    }
+
+    public static int computeComplementaryCardHash(Card card, Card anotherCard) {
+        int complementaryCardHash = 0;
+
+        if(card.color == anotherCard.color) {
+            complementaryCardHash += card.color.ordinal();
+        } else {
+            complementaryCardHash += 3 - (card.color.ordinal() + anotherCard.color.ordinal());
+        }
+
+        complementaryCardHash *= 3;
+        if(card.number == anotherCard.number) {
+            complementaryCardHash += card.number.ordinal();
+        } else {
+            complementaryCardHash += 3 - (card.number.ordinal() + anotherCard.number.ordinal());
+        }
+
+        complementaryCardHash *= 3;
+        if(card.symbol == anotherCard.symbol) {
+            complementaryCardHash += card.symbol.ordinal();
+        } else {
+            complementaryCardHash += 3 - (card.symbol.ordinal() + anotherCard.symbol.ordinal());
+        }
+
+        complementaryCardHash *= 3;
+        if(card.shading == anotherCard.shading) {
+            complementaryCardHash += card.shading.ordinal();
+        } else {
+            complementaryCardHash += 3 - (card.shading.ordinal() + anotherCard.shading.ordinal());
+        }
+        return complementaryCardHash;
     }
 
     @Override
@@ -28,10 +64,10 @@ public class Card {
 
     @Override
     public int hashCode() {
-        int result = color.hashCode();
-        result = 31 * result + number.hashCode();
-        result = 31 * result + symbol.hashCode();
-        result = 31 * result + shading.hashCode();
+        int result = color.ordinal();
+        result = 3 * result + number.ordinal();
+        result = 3 * result + symbol.ordinal();
+        result = 3 * result + shading.ordinal();
         return result;
     }
 
