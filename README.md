@@ -1,5 +1,7 @@
 # SET GAME
 
+Program to find the solutions to the [Set Game](https://www.setgame.com/set/puzzle)
+
 ## Language 
 Java 
 
